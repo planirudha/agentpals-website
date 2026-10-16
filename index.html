@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AgentPals — Autonomous AI agents for real work</title>
+  <meta name="description" content="AgentPals deploys teams of autonomous AI agents that plan, use your tools, and deliver finished work — with humans in the loop where it matters." />
+  <meta name="theme-color" content="#07070c" />
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AgentPals — Autonomous AI agents for real work" />
+  <meta property="og:description" content="Teams of AI agents that plan, act, and deliver — safely." />
+  <meta property="og:image" content="assets/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Apply saved theme before paint to avoid a flash -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t && window.matchMedia('(prefers-color-scheme: light)').matches) t = 'light';
+      if (t) document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</head>
+<body>
+  <!-- AgentPals mark, defined once and reused with <use href="#ap-mark"> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <mask id="ap-gap" maskUnits="userSpaceOnUse" x="-160" y="-170" width="320" height="320">
+        <rect x="-160" y="-170" width="320" height="320" fill="#fff"/>
+        <circle cx="0" cy="-121" r="36.5" fill="#000"/><circle cx="-104" cy="61" r="36.5" fill="#000"/><circle cx="104" cy="61" r="36.5" fill="#000"/>
+      </mask>
+    </defs>
+    <symbol id="ap-mark" viewBox="-137 -153 274 284">
+      <g fill="#006dfb">
+        <circle r="114.5" fill="none" stroke="#006dfb" stroke-width="29" mask="url(#ap-gap)"/>
+        <circle r="50"/>
+        <circle cx="0" cy="-121" r="33"/><circle cx="-104" cy="61" r="33"/><circle cx="104" cy="61" r="33"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#" class="brand" aria-label="AgentPals home">
+        <svg class="brand__mark" aria-hidden="true"><use href="#ap-mark"/></svg>
+        <span class="brand__word" aria-hidden="true"></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#playground">Playground</a>
+        <a href="#usecases">Use cases</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle color theme">
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a href="#waitlist" class="btn btn--primary btn--sm hide-sm">Get early access</a>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <canvas class="hero__canvas" id="netCanvas" aria-hidden="true"></canvas>
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <a href="#waitlist" class="pill reveal">
+            <span class="pill__dot"></span> Now in private beta
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <h1 class="hero__title reveal">
+            AI agents that don't just answer.<br />
+            <span class="grad">They get it done.</span>
+          </h1>
+          <p class="hero__sub reveal">
+            AgentPals gives your team a crew of autonomous agents that plan multi-step work, use your tools, check each other,
+            and hand you finished results — with you approving what matters.
+          </p>
+          <div class="hero__ctas reveal">
+            <a href="#waitlist" class="btn btn--primary magnetic">Join the waitlist</a>
+            <a href="#playground" class="btn btn--ghost">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              Watch agents work
+            </a>
+          </div>
+          <ul class="hero__meta reveal">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>No-code & API</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Human-in-the-loop</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Full audit trail</li>
+          </ul>
+        </div>
+
+        <!-- Live agent console -->
+        <div class="console reveal" aria-label="Example agent run">
+          <div class="console__bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="console__title">agentpals · run #4821</span>
+            <span class="console__status"><span class="live"></span>running</span>
+          </div>
+          <div class="console__body" id="consoleBody" aria-live="off"></div>
+          <div class="console__foot">
+            <div class="progress"><span id="consoleProgress"></span></div>
+            <span class="muted mono" id="consoleStep">step 0/6</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#stack" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- ============ STACK MARQUEE ============ -->
+    <section class="stack" id="stack" aria-label="Integrations">
+      <p class="stack__label">Plugs into the tools your team already uses</p>
+      <div class="marquee">
+        <div class="marquee__track">
+          <span>✉️ Email</span><span>💬 Chat</span><span>📄 Docs</span><span>🗂️ CRM</span><span>🐙 Code repos</span>
+          <span>🎫 Ticketing</span><span>📊 Data warehouse</span><span>📅 Calendar</span><span>🧾 Billing</span><span>🔌 Any REST API</span>
+          <span aria-hidden="true">✉️ Email</span><span aria-hidden="true">💬 Chat</span><span aria-hidden="true">📄 Docs</span><span aria-hidden="true">🗂️ CRM</span><span aria-hidden="true">🐙 Code repos</span>
+          <span aria-hidden="true">🎫 Ticketing</span><span aria-hidden="true">📊 Data warehouse</span><span aria-hidden="true">📅 Calendar</span><span aria-hidden="true">🧾 Billing</span><span aria-hidden="true">🔌 Any REST API</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section" id="how">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2>From a single sentence to shipped work.</h2>
+          <p>Every AgentPals agent runs the same loop — the one great teammates already use.</p>
+        </header>
+
+        <div class="loop">
+          <ol class="loop__steps" id="loopSteps">
+            <li class="loop__step is-active" data-step="0">
+              <span class="loop__num">01</span>
+              <div><h3>Understand</h3><p>Describe the goal in plain language. AgentPals reads the context it needs — docs, tickets, data — and clarifies anything ambiguous.</p></div>
+            </li>
+            <li class="loop__step" data-step="1">
+              <span class="loop__num">02</span>
+              <div><h3>Plan</h3><p>A planner agent breaks the goal into steps and assigns each to a specialist: researcher, analyst, writer, engineer.</p></div>
+            </li>
+            <li class="loop__step" data-step="2">
+              <span class="loop__num">03</span>
+              <div><h3>Act</h3><p>Agents call real tools — APIs, browsers, code sandboxes — and pause for your approval on anything sensitive.</p></div>
+            </li>
+            <li class="loop__step" data-step="3">
+              <span class="loop__num">04</span>
+              <div><h3>Verify &amp; learn</h3><p>A reviewer agent checks the output against your criteria. Every run makes the next one smarter.</p></div>
+            </li>
+          </ol>
+
+          <div class="loop__visual" aria-hidden="true">
+            <div class="orbit">
+              <div class="orbit__ring r1"></div>
+              <div class="orbit__ring r2"></div>
+              <div class="orbit__core"><span id="loopCoreLabel">Understand</span></div>
+              <div class="orbit__node n0 is-on">🧭</div>
+              <div class="orbit__node n1">🗺️</div>
+              <div class="orbit__node n2">⚡</div>
+              <div class="orbit__node n3">✅</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CAPABILITIES (BENTO) ============ -->
+    <section class="section" id="capabilities">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="eyebrow">Capabilities</span>
+          <h2>Everything an agent needs to be trusted with real work.</h2>
+        </header>
+
+        <div class="bento">
+          <article class="card card--xl reveal spotlight">
+            <div class="card__icon">🤝</div>
+            <h3>Multi-agent orchestration</h3>
+            <p>Specialist agents collaborate, debate, and hand off — like a small team that never sleeps.</p>
+            <div class="mini-graph" aria-hidden="true">
+              <span class="mg-node a">Planner</span>
+              <span class="mg-node b">Research</span>
+              <span class="mg-node c">Builder</span>
+              <span class="mg-node d">Reviewer</span>
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none"><path class="mg-line" d="M60 30 C150 30 150 110 240 110"/><path class="mg-line" d="M60 30 C150 30 150 30 240 30"/><path class="mg-line" d="M60 110 C150 110 150 30 240 30"/></svg>
+            </div>
+          </article>
+          <article class="card reveal spotlight">
+            <div class="card__icon">🛠️</div>
+            <h3>Real tool use</h3>
+            <p>APIs, browsers, spreadsheets and code sandboxes — agents act, not just chat.</p>
+          </article>
+          <article class="card reveal spotlight">
+            <div class="card__icon">🧠</div>
+            <h3>Long-term memory</h3>
+            <p>Agents remember your preferences, past decisions and company knowledge.</p>
+          </article>
+          <article class="card reveal spotlight">
+            <div class="card__icon">🙋</div>
+            <h3>Human-in-the-loop</h3>
+            <p>Set approval gates for payments, emails or deploys. You stay in control.</p>
+          </article>
+          <article class="card reveal spotlight">
+            <div class="card__icon">🛡️</div>
+            <h3>Guardrails &amp; audit</h3>
+            <p>Scoped permissions, policy checks and a replayable log of every action.</p>
+          </article>
+          <article class="card card--wide reveal spotlight">
+            <div class="card__icon">📈</div>
+            <h3>Observability &amp; evals</h3>
+            <p>Trace every thought, tool call and cost. Score runs automatically and catch regressions before your users do.</p>
+            <div class="spark" aria-hidden="true">
+              <i style="--h:30%"></i><i style="--h:45%"></i><i style="--h:38%"></i><i style="--h:60%"></i><i style="--h:52%"></i><i style="--h:72%"></i><i style="--h:66%"></i><i style="--h:84%"></i><i style="--h:78%"></i><i style="--h:92%"></i>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PLAYGROUND ============ -->
+    <section class="section section--tint" id="playground">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="eyebrow">Playground</span>
+          <h2>Give the crew a mission.</h2>
+          <p>Pick a task and watch a team of agents coordinate in real time. <span class="muted">(Simulated demo.)</span></p>
+        </header>
+
+        <div class="pg reveal">
+          <div class="pg__missions" role="radiogroup" aria-label="Choose a mission">
+            <button class="chip is-active" role="radio" aria-checked="true" data-mission="research">🔍 Competitive research report</button>
+            <button class="chip" role="radio" aria-checked="false" data-mission="support">🎧 Clear the support backlog</button>
+            <button class="chip" role="radio" aria-checked="false" data-mission="code">🐞 Fix a failing test &amp; open a PR</button>
+          </div>
+
+          <div class="pg__stage">
+            <div class="pg__graph" id="pgGraph">
+              <svg class="pg__wires" id="pgWires" aria-hidden="true"></svg>
+              <div class="agent" data-agent="planner"  style="--x:50%;--y:14%"><span class="agent__av">🧭</span><span class="agent__name">Planner</span></div>
+              <div class="agent" data-agent="research" style="--x:16%;--y:52%"><span class="agent__av">🔍</span><span class="agent__name">Researcher</span></div>
+              <div class="agent" data-agent="builder"  style="--x:84%;--y:52%"><span class="agent__av">⚙️</span><span class="agent__name">Builder</span></div>
+              <div class="agent" data-agent="review"   style="--x:50%;--y:86%"><span class="agent__av">✅</span><span class="agent__name">Reviewer</span></div>
+            </div>
+
+            <div class="pg__log">
+              <div class="pg__logHead">
+                <span class="mono">agent_log</span>
+                <button class="btn btn--primary btn--sm" id="pgRun">▶ Deploy agents</button>
+              </div>
+              <ul class="pg__msgs" id="pgMsgs" aria-live="polite">
+                <li class="pg__empty">Choose a mission and press <b>Deploy agents</b>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ USE CASES ============ -->
+    <section class="section" id="usecases">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="eyebrow">Use cases</span>
+          <h2>One platform. Every team.</h2>
+        </header>
+
+        <div class="tabs reveal">
+          <div class="tabs__list" role="tablist" aria-label="Use cases">
+            <button role="tab" id="tab-ops" aria-controls="panel-ops" aria-selected="true">Operations</button>
+            <button role="tab" id="tab-sales" aria-controls="panel-sales" aria-selected="false" tabindex="-1">Sales</button>
+            <button role="tab" id="tab-support" aria-controls="panel-support" aria-selected="false" tabindex="-1">Support</button>
+            <button role="tab" id="tab-eng" aria-controls="panel-eng" aria-selected="false" tabindex="-1">Engineering</button>
+            <span class="tabs__ink" aria-hidden="true"></span>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="panel-ops" aria-labelledby="tab-ops">
+            <div><h3>Run the busywork on autopilot</h3>
+              <ul class="ticks"><li>Reconcile invoices across systems</li><li>Generate weekly reports from live data</li><li>Route and triage incoming requests</li></ul></div>
+            <div class="flow"><span>📥 Request</span><i></i><span>🧭 Triage agent</span><i></i><span>📊 Report</span></div>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="panel-sales" aria-labelledby="tab-sales" hidden>
+            <div><h3>A research team for every rep</h3>
+              <ul class="ticks"><li>Account research before every call</li><li>Personalized follow-ups, drafted for approval</li><li>CRM kept clean and up to date</li></ul></div>
+            <div class="flow"><span>🏢 Lead</span><i></i><span>🔍 Research agent</span><i></i><span>✉️ Draft</span></div>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="panel-support" aria-labelledby="tab-support" hidden>
+            <div><h3>Resolve, don't just respond</h3>
+              <ul class="ticks"><li>Diagnose issues using account data</li><li>Take actions like refunds — with approval gates</li><li>Escalate to humans with full context</li></ul></div>
+            <div class="flow"><span>🎫 Ticket</span><i></i><span>🎧 Support agent</span><i></i><span>✅ Resolved</span></div>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="panel-eng" aria-labelledby="tab-eng" hidden>
+            <div><h3>Ship more, toil less</h3>
+              <ul class="ticks"><li>Fix flaky tests and open PRs</li><li>Upgrade dependencies safely</li><li>Investigate incidents from logs</li></ul></div>
+            <div class="flow"><span>🐞 Bug</span><i></i><span>⚙️ Coding agent</span><i></i><span>🔀 PR</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="eyebrow">Pricing</span>
+          <h2>Start free. Scale when it works.</h2>
+        </header>
+
+        <div class="pricing">
+          <article class="plan reveal">
+            <h3>Starter</h3>
+            <p class="plan__price"><span>$0</span> during beta</p>
+            <p class="muted">For individuals exploring agents.</p>
+            <ul class="ticks"><li>3 agents</li><li>Core integrations</li><li>Community support</li></ul>
+            <a href="#waitlist" class="btn btn--ghost btn--block">Join waitlist</a>
+          </article>
+          <article class="plan plan--featured reveal">
+            <span class="plan__badge">Most popular</span>
+            <h3>Team</h3>
+            <p class="plan__price"><span>$49</span> / seat / mo</p>
+            <p class="muted">For teams putting agents into production.</p>
+            <ul class="ticks"><li>Unlimited agents</li><li>Approval workflows</li><li>Shared memory &amp; audit log</li><li>Priority support</li></ul>
+            <a href="#waitlist" class="btn btn--primary btn--block">Get early access</a>
+          </article>
+          <article class="plan reveal">
+            <h3>Enterprise</h3>
+            <p class="plan__price"><span>Custom</span></p>
+            <p class="muted">For security-conscious organizations.</p>
+            <ul class="ticks"><li>SSO &amp; role-based access</li><li>Private deployment</li><li>Dedicated success team</li></ul>
+            <a href="#waitlist" class="btn btn--ghost btn--block">Talk to us</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container container--narrow">
+        <header class="section__head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions, answered.</h2>
+        </header>
+        <div class="faq reveal">
+          <details><summary>What is an "agentic" AI?</summary><p>Instead of answering one prompt, an agent pursues a goal: it plans steps, uses tools, checks its own work and keeps going until the task is done — or until it needs you.</p></details>
+          <details><summary>Will agents take actions without my permission?</summary><p>Only the ones you allow. You decide which actions run automatically and which require a human approval, per agent and per tool.</p></details>
+          <details><summary>Where does my data go?</summary><p>Your data is used only to complete your tasks. Enterprise plans support private deployment so data never leaves your environment.</p></details>
+          <details><summary>Do I need to write code?</summary><p>No. Describe the work in plain language. Developers can also use our API and SDK for deeper customization.</p></details>
+          <details><summary>When can I get access?</summary><p>We're onboarding beta teams in waves. Join the waitlist and we'll reach out personally.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA / WAITLIST ============ -->
+    <section class="section" id="waitlist">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="cta__glow" aria-hidden="true"></div>
+          <h2>Meet your new <span class="grad">AI pals.</span></h2>
+          <p>Join the private beta and be among the first teams to put a crew of autonomous agents to work.</p>
+          <form class="cta__form" id="waitlistForm" novalidate>
+            <label class="sr-only" for="email">Work email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required />
+            <button class="btn btn--primary" type="submit">Request access</button>
+          </form>
+          <p class="cta__note" id="formNote" role="status"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a href="#" class="brand brand--lg" aria-label="AgentPals home">
+          <svg class="brand__mark" aria-hidden="true"><use href="#ap-mark"/></svg>
+          <span class="brand__word" aria-hidden="true"></span>
+        </a>
+        <p class="muted" style="margin-top:10px">Your AI teammates for real work.</p>
+      </div>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="mailto:hello@example.com">Contact</a>
+      </nav>
+      <p class="muted small">© <span id="year"></span> AgentPals. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

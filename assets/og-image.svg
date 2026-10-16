@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#006dfb"/><stop offset=".5" stop-color="#3d8bff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <radialGradient id="r" cx=".3" cy=".4" r=".6"><stop offset="0" stop-color="#006dfb" stop-opacity=".35"/><stop offset="1" stop-color="#07070c" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#07070c"/>
+  <rect width="1200" height="630" fill="url(#r)"/>
+  <image href="agentpals-logo.png" xlink:href="agentpals-logo.png" x="80" y="70" width="400" height="85"/>
+  <text x="80" y="320" font-family="Space Grotesk, Arial, sans-serif" font-size="84" font-weight="700" fill="#ecebf5">AI agents that</text>
+  <text x="80" y="420" font-family="Space Grotesk, Arial, sans-serif" font-size="84" font-weight="700" fill="url(#g)">get it done.</text>
+  <text x="80" y="510" font-family="Inter, Arial, sans-serif" font-size="32" fill="#a3a1b8">Your AI teammates for real work</text>
+</svg>
