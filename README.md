@@ -84,6 +84,6 @@ Do these steps once the site is live.
 ## Notes
 - `404.html` sets its base path automatically, so it works on both `…github.io/agentpals-website/` and a custom domain.
 - Social sites (LinkedIn, X, Slack) don't render SVG preview images. Export `assets/og-image.svg` to a 1200×630 PNG and point `og:image` at it.
-- The hero console, multiplayer incident room and playground are **simulated** animations. Replace the scripted messages in `js/main.js` (`script`, `SCRIPT`, `MISSIONS`) with flows that match your real product.
+- The hero console and playground are **simulated** animations. Replace the scripted messages in `js/main.js` (`script`, `MISSIONS`) with flows that match your real product.
 - Before launch, add real customer logos, testimonials and metrics only once you have them.
 - Accessibility: keyboard navigable, skip link, ARIA tabs, live regions, and full `prefers-reduced-motion` support.

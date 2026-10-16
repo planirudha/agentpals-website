@@ -187,37 +187,6 @@
           </div>
         </div>
 
-        <!-- Live incident room -->
-        <div class="room reveal" id="room">
-          <div class="room__main">
-            <div class="room__head">
-              <div>
-                <span class="room__sev">SEV-2</span>
-                <strong class="mono">#inc-2417</strong>
-                <span class="muted room__title">checkout-api latency spike</span>
-              </div>
-              <div class="room__people" aria-label="Participants">
-                <span class="av av--human" title="Priya (human)">PR</span><span class="av av--human" title="Marco (human)">MA</span>
-                <span class="av av--agent" title="Triage agent">🛰️</span><span class="av av--agent" title="Diagnose agent">🔬</span><span class="av av--agent" title="Fix agent">🛠️</span>
-              </div>
-            </div>
-            <ul class="room__feed" id="roomFeed" aria-live="polite"></ul>
-          </div>
-
-          <aside class="room__side">
-            <div class="room__clock">
-              <span class="muted small">Time to resolve</span>
-              <span class="room__time mono" id="roomTime">00:00</span>
-              <span class="room__state" id="roomState"><span class="live"></span>Investigating</span>
-            </div>
-            <ol class="room__stages" id="roomStages">
-              <li>Detected</li><li>Triaged</li><li>Root cause found</li><li>Fix approved by a human</li><li>Deployed</li><li>Verified &amp; shared</li>
-            </ol>
-            <button class="btn btn--ghost btn--sm btn--block" id="roomReplay">↻ Replay incident</button>
-            <p class="muted small room__note">Illustrative simulation of a shared incident room.</p>
-          </aside>
-        </div>
-
         <!-- Principles -->
         <div class="mp__pillars">
           <article class="card reveal spotlight">
