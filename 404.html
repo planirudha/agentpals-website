@@ -4,9 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Page not found — AgentPals</title>
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <!-- Resolve assets from the site root: "/<repo>/" on *.github.io project pages, "/" on a custom domain -->
+  <script>
+    document.write('<base href="' + (location.hostname.endsWith('github.io') ? '/' + location.pathname.split('/')[1] + '/' : '/') + '">');
+  </script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
   <style>
     .nf { min-height: 100svh; display: grid; place-items: center; text-align: center; padding: 24px; }
@@ -19,7 +23,7 @@
     <div>
       <div class="nf__code grad">404</div>
       <p class="mono">agent.search("this page") → 0 results</p>
-      <a class="btn btn--primary" href="/">Back to home</a>
+      <a class="btn btn--primary" href="./">Back to home</a>
     </div>
   </main>
 </body>
