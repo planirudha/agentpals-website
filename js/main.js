@@ -4,7 +4,7 @@
 
 // ---- Config: set this to your form endpoint (e.g. https://formspree.io/f/xxxxxxx).
 // Left empty, the waitlist form falls back to opening the visitor's email client.
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://formspree.io/f/moejypbv';
 const CONTACT_EMAIL = 'hello@example.com';
 
 const $ = (s, el = document) => el.querySelector(s);
