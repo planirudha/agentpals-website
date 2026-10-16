@@ -362,6 +362,112 @@ if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
   io.observe(graph);
 })();
 
+/* ---------------- Multiplayer AI: single vs multi toggle ---------------- */
+(() => {
+  const viz = $('#mpViz');
+  const seg = $('.seg');
+  const btns = $$('button', seg);
+  const ink = $('.seg__ink', seg);
+  const caps = $$('.mp__cap');
+  let touched = false;
+
+  const moveInk = (b) => { ink.style.width = `${b.offsetWidth}px`; ink.style.transform = `translateX(${b.offsetLeft}px)`; };
+  function setMode(mode) {
+    viz.dataset.mode = mode;
+    btns.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.mode === mode)));
+    caps.forEach((c) => c.classList.toggle('is-on', c.dataset.for === mode));
+    moveInk(btns.find((b) => b.dataset.mode === mode));
+  }
+  btns.forEach((b) => b.addEventListener('click', () => { touched = true; setMode(b.dataset.mode); }));
+  window.addEventListener('resize', () => moveInk(btns.find((b) => b.getAttribute('aria-checked') === 'true')));
+  document.fonts?.ready.then(() => moveInk(btns.find((b) => b.getAttribute('aria-checked') === 'true')));
+
+  if (reduceMotion) { setMode('multi'); return; }
+  // Tell the story once: start siloed, then bring everyone into the shared room.
+  setMode('single');
+  const io = new IntersectionObserver(([en]) => {
+    if (!en.isIntersecting) return;
+    io.disconnect();
+    setTimeout(() => { if (!touched) setMode('multi'); }, 1800);
+  }, { threshold: 0.5 });
+  io.observe(viz);
+})();
+
+/* ---------------- Multiplayer AI: live incident room ---------------- */
+(() => {
+  const feed = $('#roomFeed'), time = $('#roomTime'), state = $('#roomState'), replay = $('#roomReplay');
+  const stages = $$('#roomStages li');
+  const P = {
+    system:   { name: 'PagerAlert',     av: '🚨', kind: 'system' },
+    triage:   { name: 'Triage agent',   av: '🛰️', kind: 'agent' },
+    diagnose: { name: 'Diagnose agent', av: '🔬', kind: 'agent' },
+    fix:      { name: 'Fix agent',      av: '🛠️', kind: 'agent' },
+    priya:    { name: 'Priya',          av: 'PR', kind: 'human' },
+    marco:    { name: 'Marco',          av: 'MA', kind: 'human' },
+  };
+  // [simulated seconds, who, text, style, stage reached]
+  const SCRIPT = [
+    [0,   'system',   'checkout-api p95 latency is 2.4s (SLO 300ms). Error rate 3.1%.', 'alert', 0],
+    [40,  'triage',   'Opened #inc-2417 and paged Priya. ~18% of checkouts are slower than 2s. The spike started 3 min after deploy v4.12.0.', '', 1],
+    [95,  'priya',    'On it 👋 @Diagnose can you check the database and that deploy?'],
+    [190, 'diagnose', 'Root cause: v4.12.0 added an N+1 query in cart pricing. DB connection pool at 96%. Evidence (3 slow traces + query log) pinned to this room.', '', 2],
+    [250, 'marco',    "Confirmed, that's my change. Rollback is safest. I'll fix forward after."],
+    [300, 'fix',      'Rollback plan ready: v4.12.0 → v4.11.3, canary 10% then 100%. Waiting for human approval.', 'ask'],
+    [345, 'priya',    '✅ Approved. Go ahead.', 'approve', 3],
+    [470, 'fix',      'Canary healthy for 2 min → rolled out to 100%. p95 back to 210ms, errors 0.02%.', '', 4],
+    [600, 'triage',   'Resolved and verified. Postmortem draft + regression-test PR #912 shared with the whole team.', 'done', 5],
+  ];
+  const SPEED = 32; // simulated seconds per real second
+  const fmt = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  let runId = 0;
+
+  function setStage(i) {
+    stages.forEach((li, k) => { li.classList.toggle('is-done', k <= i); li.classList.toggle('is-active', k === i + 1); });
+  }
+  function post([at, who, text, style = '']) {
+    const p = P[who];
+    const li = document.createElement('li');
+    li.className = `rmsg rmsg--${p.kind}${style ? ' rmsg--' + style : ''}`;
+    const badge = p.kind === 'system' ? '' : `<span class="badge badge--${p.kind}">${p.kind}</span>`;
+    li.innerHTML = `<span class="rmsg__av">${p.av}</span><div><div class="rmsg__meta"><b>${p.name}</b>${badge}<time>${fmt(at)}</time></div><div class="rmsg__body"></div></div>`;
+    $('.rmsg__body', li).textContent = text;
+    feed.appendChild(li);
+    feed.scrollTop = feed.scrollHeight;
+  }
+  function finish() {
+    state.classList.add('is-done');
+    state.innerHTML = '<span class="live"></span>Resolved · everyone saw every step';
+  }
+  function reset() {
+    feed.innerHTML = ''; time.textContent = '00:00'; setStage(-1);
+    state.classList.remove('is-done'); state.innerHTML = '<span class="live"></span>Investigating';
+  }
+
+  function run() {
+    const id = ++runId;
+    reset();
+    if (reduceMotion) {
+      SCRIPT.forEach(post); setStage(5); time.textContent = fmt(SCRIPT.at(-1)[0]); finish(); return;
+    }
+    let next = 0, t0 = performance.now();
+    (function tick(now) {
+      if (id !== runId) return;
+      const sim = Math.min((now - t0) / 1000 * SPEED, SCRIPT.at(-1)[0]);
+      time.textContent = fmt(sim);
+      while (next < SCRIPT.length && SCRIPT[next][0] <= sim) {
+        const m = SCRIPT[next++];
+        post(m);
+        if (m[4] !== undefined) setStage(m[4]);
+      }
+      if (next < SCRIPT.length) requestAnimationFrame(tick); else finish();
+    })(t0);
+  }
+
+  replay.addEventListener('click', run);
+  const io = new IntersectionObserver(([en]) => { if (en.isIntersecting) { run(); io.disconnect(); } }, { threshold: 0.35 });
+  io.observe($('#room'));
+})();
+
 /* ---------------- Tabs (accessible, with sliding ink) ---------------- */
 (() => {
   const list = $('.tabs__list');

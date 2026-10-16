@@ -59,11 +59,11 @@
       </a>
 
       <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#multiplayer">Multiplayer</a>
         <a href="#how">How it works</a>
         <a href="#capabilities">Capabilities</a>
         <a href="#playground">Playground</a>
         <a href="#usecases">Use cases</a>
-        <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </nav>
 
@@ -89,7 +89,7 @@
       <div class="container hero__grid">
         <div class="hero__copy">
           <a href="#waitlist" class="pill reveal">
-            <span class="pill__dot"></span> Now in private beta
+            <span class="pill__dot"></span> Multiplayer AI · now in private beta
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
           <h1 class="hero__title reveal">
@@ -97,18 +97,19 @@
             <span class="grad">They get it done.</span>
           </h1>
           <p class="hero__sub reveal">
-            AgentPals gives your team a crew of autonomous agents that plan multi-step work, use your tools, check each other,
-            and hand you finished results — with you approving what matters.
+            AgentPals is <strong>multiplayer AI</strong>: a crew of autonomous agents working side by side with your team
+            on your production systems — one shared context, real tools, and humans approving what matters — so issues
+            get resolved in the least possible time.
           </p>
           <div class="hero__ctas reveal">
             <a href="#waitlist" class="btn btn--primary magnetic">Join the waitlist</a>
-            <a href="#playground" class="btn btn--ghost">
+            <a href="#multiplayer" class="btn btn--ghost">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-              Watch agents work
+              See multiplayer AI
             </a>
           </div>
           <ul class="hero__meta reveal">
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>No-code & API</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Humans + agents, one space</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Human-in-the-loop</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Full audit trail</li>
           </ul>
@@ -141,6 +142,99 @@
           <span>🎫 Ticketing</span><span>📊 Data warehouse</span><span>📅 Calendar</span><span>🧾 Billing</span><span>🔌 Any REST API</span>
           <span aria-hidden="true">✉️ Email</span><span aria-hidden="true">💬 Chat</span><span aria-hidden="true">📄 Docs</span><span aria-hidden="true">🗂️ CRM</span><span aria-hidden="true">🐙 Code repos</span>
           <span aria-hidden="true">🎫 Ticketing</span><span aria-hidden="true">📊 Data warehouse</span><span aria-hidden="true">📅 Calendar</span><span aria-hidden="true">🧾 Billing</span><span aria-hidden="true">🔌 Any REST API</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MULTIPLAYER AI ============ -->
+    <section class="section mp" id="multiplayer">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="eyebrow">Multiplayer AI</span>
+          <h2>Humans and agents. <span class="grad">One shared room.</span></h2>
+          <p>Most AI is single-player: one person, one private chat, and answers that never reach the team.
+             AgentPals is multiplayer. Agents and engineers work together on your production systems with the same context,
+             so issues get resolved in the least possible time.</p>
+        </header>
+
+        <!-- Single-player vs multiplayer -->
+        <div class="mp__compare reveal">
+          <div class="seg" role="radiogroup" aria-label="Compare AI modes">
+            <button role="radio" aria-checked="false" data-mode="single">🙋 Single-player AI</button>
+            <button role="radio" aria-checked="true" data-mode="multi">🤝 Multiplayer AI</button>
+            <span class="seg__ink" aria-hidden="true"></span>
+          </div>
+
+          <div class="mp__viz" id="mpViz" data-mode="multi" aria-hidden="true">
+            <span class="silo s1"><em>private chat</em></span><span class="silo s2"><em>private chat</em></span><span class="silo s3"><em>private chat</em></span>
+            <svg class="mp__spokes" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <line x1="50" y1="50" x2="50" y2="14"/><line x1="50" y1="50" x2="81.2" y2="32"/><line x1="50" y1="50" x2="81.2" y2="68"/>
+              <line x1="50" y1="50" x2="50" y2="86"/><line x1="50" y1="50" x2="18.8" y2="68"/><line x1="50" y1="50" x2="18.8" y2="32"/>
+            </svg>
+            <div class="mp__hub"><strong>Shared room</strong><small>one context · one answer</small></div>
+            <div class="pal pal--human" style="--sx:18%;--sy:40%;--mx:50%;--my:14%"><span>PR</span><b>Priya · on-call</b></div>
+            <div class="pal pal--agent" style="--sx:18%;--sy:66%;--mx:18.8%;--my:32%"><span>🛰️</span><b>Triage agent</b></div>
+            <div class="pal pal--human" style="--sx:50%;--sy:40%;--mx:81.2%;--my:68%"><span>MA</span><b>Marco · backend</b></div>
+            <div class="pal pal--agent" style="--sx:50%;--sy:66%;--mx:81.2%;--my:32%"><span>🔬</span><b>Diagnose agent</b></div>
+            <div class="pal pal--human" style="--sx:82%;--sy:40%;--mx:18.8%;--my:68%"><span>SA</span><b>Sam · SRE lead</b></div>
+            <div class="pal pal--agent" style="--sx:82%;--sy:66%;--mx:50%;--my:86%"><span>🛠️</span><b>Fix agent</b></div>
+            <span class="q q1">“Is checkout down?”</span><span class="q q2">“Is checkout down?”</span><span class="q q3">“Which deploy broke it?”</span>
+          </div>
+
+          <div class="mp__captions">
+            <p class="mp__cap" data-for="single"><b>Single-player:</b> everyone has a private AI. The same question gets asked three times, answers conflict, and context gets lost in DMs and copy-paste.</p>
+            <p class="mp__cap" data-for="multi"><b>Multiplayer:</b> one shared space. Agents and humans see the same logs, decisions and results, so work happens once and everyone stays in sync.</p>
+          </div>
+        </div>
+
+        <!-- Live incident room -->
+        <div class="room reveal" id="room">
+          <div class="room__main">
+            <div class="room__head">
+              <div>
+                <span class="room__sev">SEV-2</span>
+                <strong class="mono">#inc-2417</strong>
+                <span class="muted room__title">checkout-api latency spike</span>
+              </div>
+              <div class="room__people" aria-label="Participants">
+                <span class="av av--human" title="Priya (human)">PR</span><span class="av av--human" title="Marco (human)">MA</span>
+                <span class="av av--agent" title="Triage agent">🛰️</span><span class="av av--agent" title="Diagnose agent">🔬</span><span class="av av--agent" title="Fix agent">🛠️</span>
+              </div>
+            </div>
+            <ul class="room__feed" id="roomFeed" aria-live="polite"></ul>
+          </div>
+
+          <aside class="room__side">
+            <div class="room__clock">
+              <span class="muted small">Time to resolve</span>
+              <span class="room__time mono" id="roomTime">00:00</span>
+              <span class="room__state" id="roomState"><span class="live"></span>Investigating</span>
+            </div>
+            <ol class="room__stages" id="roomStages">
+              <li>Detected</li><li>Triaged</li><li>Root cause found</li><li>Fix approved by a human</li><li>Deployed</li><li>Verified &amp; shared</li>
+            </ol>
+            <button class="btn btn--ghost btn--sm btn--block" id="roomReplay">↻ Replay incident</button>
+            <p class="muted small room__note">Illustrative simulation of a shared incident room.</p>
+          </aside>
+        </div>
+
+        <!-- Principles -->
+        <div class="mp__pillars">
+          <article class="card reveal spotlight">
+            <div class="card__icon">🧩</div>
+            <h3>Shared context</h3>
+            <p>Humans and agents see the same alerts, logs, traces and decisions. Nobody re-asks, nobody re-explains.</p>
+          </article>
+          <article class="card reveal spotlight">
+            <div class="card__icon">⚖️</div>
+            <h3>Agents act, humans decide</h3>
+            <p>Agents do the toil on production: querying, diagnosing, preparing rollbacks. Humans approve anything risky.</p>
+          </article>
+          <article class="card reveal spotlight">
+            <div class="card__icon">📚</div>
+            <h3>Knowledge compounds</h3>
+            <p>Every resolution becomes team memory, so the next incident starts smarter and closes faster.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -322,41 +416,6 @@
       </div>
     </section>
 
-    <!-- ============ PRICING ============ -->
-    <section class="section" id="pricing">
-      <div class="container">
-        <header class="section__head reveal">
-          <span class="eyebrow">Pricing</span>
-          <h2>Start free. Scale when it works.</h2>
-        </header>
-
-        <div class="pricing">
-          <article class="plan reveal">
-            <h3>Starter</h3>
-            <p class="plan__price"><span>$0</span> during beta</p>
-            <p class="muted">For individuals exploring agents.</p>
-            <ul class="ticks"><li>3 agents</li><li>Core integrations</li><li>Community support</li></ul>
-            <a href="#waitlist" class="btn btn--ghost btn--block">Join waitlist</a>
-          </article>
-          <article class="plan plan--featured reveal">
-            <span class="plan__badge">Most popular</span>
-            <h3>Team</h3>
-            <p class="plan__price"><span>$49</span> / seat / mo</p>
-            <p class="muted">For teams putting agents into production.</p>
-            <ul class="ticks"><li>Unlimited agents</li><li>Approval workflows</li><li>Shared memory &amp; audit log</li><li>Priority support</li></ul>
-            <a href="#waitlist" class="btn btn--primary btn--block">Get early access</a>
-          </article>
-          <article class="plan reveal">
-            <h3>Enterprise</h3>
-            <p class="plan__price"><span>Custom</span></p>
-            <p class="muted">For security-conscious organizations.</p>
-            <ul class="ticks"><li>SSO &amp; role-based access</li><li>Private deployment</li><li>Dedicated success team</li></ul>
-            <a href="#waitlist" class="btn btn--ghost btn--block">Talk to us</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ FAQ ============ -->
     <section class="section" id="faq">
       <div class="container container--narrow">
@@ -365,9 +424,11 @@
           <h2>Questions, answered.</h2>
         </header>
         <div class="faq reveal">
+          <details open><summary>What is "multiplayer AI"?</summary><p>Most AI today is single-player: one person, one private chat, and answers that never reach the rest of the team. Multiplayer AI puts humans and agents in one shared space. Everyone sees the same context, decisions and results, so work is done once, hand-offs disappear, and every resolution becomes knowledge the whole team can build on.</p></details>
+          <details><summary>Can agents really work on production systems?</summary><p>Yes, within guardrails you define. Agents can read logs, metrics and traces, run diagnostics and prepare fixes or rollbacks. Anything that changes production waits for a human approval in the shared room, and every action is recorded in the audit trail.</p></details>
           <details><summary>What is an "agentic" AI?</summary><p>Instead of answering one prompt, an agent pursues a goal: it plans steps, uses tools, checks its own work and keeps going until the task is done — or until it needs you.</p></details>
           <details><summary>Will agents take actions without my permission?</summary><p>Only the ones you allow. You decide which actions run automatically and which require a human approval, per agent and per tool.</p></details>
-          <details><summary>Where does my data go?</summary><p>Your data is used only to complete your tasks. Enterprise plans support private deployment so data never leaves your environment.</p></details>
+          <details><summary>Where does my data go?</summary><p>Your data is used only to complete your tasks. Private deployment is available, so your data never has to leave your environment.</p></details>
           <details><summary>Do I need to write code?</summary><p>No. Describe the work in plain language. Developers can also use our API and SDK for deeper customization.</p></details>
           <details><summary>When can I get access?</summary><p>We're onboarding beta teams in waves. Join the waitlist and we'll reach out personally.</p></details>
         </div>
@@ -403,7 +464,7 @@
         <p class="muted" style="margin-top:10px">Your AI teammates for real work.</p>
       </div>
       <nav class="footer__links" aria-label="Footer">
-        <a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="mailto:hello@example.com">Contact</a>
+        <a href="#multiplayer">Multiplayer AI</a><a href="#how">How it works</a><a href="#faq">FAQ</a><a href="mailto:hello@example.com">Contact</a>
       </nav>
       <p class="muted small">© <span id="year"></span> AgentPals. All rights reserved.</p>
     </div>
